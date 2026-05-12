@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand - Ecommerce</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- HEADER (shared) -->
+<header class="header" id="mainHeader">
+  <div class="header-top">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+      Brand
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search" id="searchInput">
+      <select>
+        <option>All category</option>
+        <option>Electronics</option>
+        <option>Clothing</option>
+        <option>Home</option>
+      </select>
+      <button onclick="handleSearch()">Search</button>
+    </div>
+    <div class="header-actions">
+      <div class="header-action" onclick="showPage('home')">
+        <i class="far fa-user"></i>
+        <span>Profile</span>
+      </div>
+      <div class="header-action">
+        <i class="far fa-comment-dots"></i>
+        <span>Message</span>
+      </div>
+      <div class="header-action">
+        <i class="far fa-heart"></i>
+        <span>Orders</span>
+      </div>
+      <div class="header-action cart-badge" onclick="showPage('cart')">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge" id="cartBadge">0</span>
+        <span>My cart</span>
+      </div>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-item all" onclick="showPage('home')"><i class="fas fa-bars"></i> All category</div>
+    <div class="nav-item" onclick="showPage('home')">Hot offers</div>
+    <div class="nav-item" onclick="showPage('home')">Gift boxes</div>
+    <div class="nav-item" onclick="showPage('home')">Projects</div>
+    <div class="nav-item" onclick="showPage('home')">Menu item</div>
+    <div class="nav-item">Help <i class="fas fa-chevron-down" style="font-size:0.7rem"></i></div>
+    <div class="nav-right">
+      <span>English, USD <i class="fas fa-chevron-down" style="font-size:0.7rem"></i></span>
+      <span>Ship to 🇩🇪 <i class="fas fa-chevron-down" style="font-size:0.7rem"></i></span>
+    </div>
+  </nav>
+</header>
+
+<!-- ======== HOME PAGE ======== -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <div class="hero-section">
+    <div class="category-list">
+      <div class="cat-item active" onclick="goToListing()">Automobiles</div>
+      <div class="cat-item" onclick="goToListing()">Clothes and wear</div>
+      <div class="cat-item" onclick="goToListing()">Home interiors</div>
+      <div class="cat-item" onclick="goToListing()">Computer and tech</div>
+      <div class="cat-item" onclick="goToListing()">Tools, equipments</div>
+      <div class="cat-item" onclick="goToListing()">Sports and outdoor</div>
+      <div class="cat-item" onclick="goToListing()">Animal and pets</div>
+      <div class="cat-item" onclick="goToListing()">Machinery tools</div>
+      <div class="cat-item" onclick="goToListing()">More category</div>
+    </div>
+    <div class="hero-banner">
+      <div class="hero-text">
+        <p>Latest trending</p>
+        <h1>Electronic items</h1>
+        <button class="btn-outline" onclick="goToListing()">Learn more</button>
+      </div>
+      <img class="hero-img" src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=700&q=80" alt="Electronics">
+    </div>
+    <div class="hero-sidebar">
+      <div class="sidebar-card user">
+        <div class="avatar"><i class="far fa-user"></i></div>
+        <div>
+          <p>Hi, user</p>
+          <strong>let's get started</strong>
+          <button class="btn-join">Join now</button>
+          <button class="btn-login">Log in</button>
+        </div>
+      </div>
+      <div class="sidebar-card orange">Get US $10 off with a new supplier</div>
+      <div class="sidebar-card teal">Send quotes with supplier preferences</div>
+    </div>
+  </div>
+
+  <!-- DEALS AND OFFERS -->
+  <div class="section">
+    <div class="deals-row">
+      <div class="deals-left">
+        <div class="section-title">Deals and offers</div>
+        <div class="section-sub">Hygiene equipments</div>
+        <div class="countdown">
+          <div class="count-box"><div class="num" id="days">04</div><div class="lbl">Days</div></div>
+          <div class="count-box"><div class="num" id="hours">13</div><div class="lbl">Hour</div></div>
+          <div class="count-box"><div class="num" id="mins">34</div><div class="lbl">Min</div></div>
+          <div class="count-box"><div class="num" id="secs">56</div><div class="lbl">Sec</div></div>
+        </div>
+      </div>
+      <div class="deals-products">
+        <div class="deal-item" onclick="showDetail(0)">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" alt="Watch">
+          <div class="name">Smart watches</div>
+          <span class="discount-badge">-25%</span>
+        </div>
+        <div class="deal-item" onclick="showDetail(1)">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&q=80" alt="Laptop">
+          <div class="name">Laptops</div>
+          <span class="discount-badge">-15%</span>
+        </div>
+        <div class="deal-item" onclick="showDetail(2)">
+          <img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=200&q=80" alt="Camera">
+          <div class="name">GoPro cameras</div>
+          <span class="discount-badge">-40%</span>
+        </div>
+        <div class="deal-item" onclick="showDetail(3)">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80" alt="Headphones">
+          <div class="name">Headphones</div>
+          <span class="discount-badge">-25%</span>
+        </div>
+        <div class="deal-item" onclick="showDetail(2)">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=80" alt="Canon">
+          <div class="name">Canon cameras</div>
+          <span class="discount-badge">-25%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOME AND OUTDOOR -->
+  <div class="cat-grid-section">
+    <div class="cat-grid">
+      <div class="cat-banner">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Home">
+        <div class="cat-banner-text">
+          <h3>Home and outdoor</h3>
+          <button class="btn-source" onclick="goToListing()">Source now</button>
+        </div>
+      </div>
+      <div class="cat-products">
+        <div class="cat-product" onclick="showDetail(4)">
+          <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=100&q=80" alt="">
+          <div class="info"><h4>Soft chairs</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="showDetail(5)">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=100&q=80" alt="">
+          <div class="info"><h4>Sofa & chair</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=100&q=80" alt="">
+          <div class="info"><h4>Kitchen dishes</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="showDetail(0)">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&q=80" alt="">
+          <div class="info"><h4>Smart watches</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=100&q=80" alt="">
+          <div class="info"><h4>Kitchen mixer</h4><p>From USD 100</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?w=100&q=80" alt="">
+          <div class="info"><h4>Blenders</h4><p>From USD 39</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=100&q=80" alt="">
+          <div class="info"><h4>Home appliance</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=100&q=80" alt="">
+          <div class="info"><h4>Coffee maker</h4><p>From USD 10</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSUMER ELECTRONICS -->
+  <div class="cat-grid-section">
+    <div class="cat-grid">
+      <div class="cat-banner" style="background:linear-gradient(135deg,#e8f4fd,#d0e8f8);">
+        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&q=80" alt="Electronics">
+        <div class="cat-banner-text">
+          <h3>Consumer electronics and gadgets</h3>
+          <button class="btn-source" onclick="goToListing()">Source now</button>
+        </div>
+      </div>
+      <div class="cat-products">
+        <div class="cat-product" onclick="showDetail(0)">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&q=80" alt="">
+          <div class="info"><h4>Smart watches</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="showDetail(2)">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=100&q=80" alt="">
+          <div class="info"><h4>Cameras</h4><p>From USD 89</p></div>
+        </div>
+        <div class="cat-product" onclick="showDetail(3)">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="">
+          <div class="info"><h4>Headphones</h4><p>From USD 10</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=100&q=80" alt="">
+          <div class="info"><h4>Smart watches</h4><p>From USD 90</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=100&q=80" alt="">
+          <div class="info"><h4>Gaming set</h4><p>From USD 35</p></div>
+        </div>
+        <div class="cat-product" onclick="showDetail(1)">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=100&q=80" alt="">
+          <div class="info"><h4>Laptops & PC</h4><p>From USD 340</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100&q=80" alt="">
+          <div class="info"><h4>Smartphones</h4><p>From USD 19</p></div>
+        </div>
+        <div class="cat-product" onclick="goToListing()">
+          <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?w=100&q=80" alt="">
+          <div class="info"><h4>Electric kettle</h4><p>From USD 240</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEND QUOTE -->
+  <div class="suppliers-banner">
+    <div class="suppliers-text">
+      <h2>An easy way to send requests to all suppliers</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+    </div>
+    <div class="quote-form">
+      <h3>Send quote to suppliers</h3>
+      <div class="form-group"><input type="text" placeholder="What item you need?"></div>
+      <div class="form-group"><textarea rows="3" placeholder="Type more details"></textarea></div>
+      <div class="form-group form-row">
+        <input type="number" placeholder="Quantity">
+        <select><option>Pcs</option><option>Kg</option><option>Set</option></select>
+      </div>
+      <button class="btn-primary" onclick="showToast('Inquiry sent successfully!')">Send inquiry</button>
+    </div>
+  </div>
+
+  <!-- RECOMMENDED ITEMS -->
+  <div class="section">
+    <h2 class="section-title">Recommended items</h2>
+    <br>
+    <div class="rec-grid" id="recGrid"></div>
+  </div>
+
+  <!-- EXTRA SERVICES -->
+  <div class="section">
+    <h2 class="section-title" style="margin-bottom:16px">Our extra services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400&q=80" alt="Source">
+        <div class="overlay"><strong>Source from Industry Hubs</strong></div>
+        <div class="icon-btn"><i class="fas fa-search"></i></div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=80" alt="Customize">
+        <div class="overlay"><strong>Customize Your Products</strong></div>
+        <div class="icon-btn"><i class="fas fa-pen"></i></div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80" alt="Shipping">
+        <div class="overlay"><strong>Fast, reliable shipping by ocean or air</strong></div>
+        <div class="icon-btn"><i class="fas fa-paper-plane"></i></div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400&q=80" alt="Monitor">
+        <div class="overlay"><strong>Product monitoring and inspection</strong></div>
+        <div class="icon-btn"><i class="fas fa-shield-alt"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPLIERS BY REGION -->
+  <div class="section">
+    <h2 class="section-title" style="margin-bottom:16px">Suppliers by region</h2>
+    <div class="region-grid">
+      <div class="region-item"><span style="font-size:1.5rem">🇦🇪</span><div><div class="rname">Arabic Emirates</div><div class="rsite">shopname.ae</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇦🇺</span><div><div class="rname">Australia</div><div class="rsite">shopname.ae</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇺🇸</span><div><div class="rname">United States</div><div class="rsite">shopname.ae</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇷🇺</span><div><div class="rname">Russia</div><div class="rsite">shopname.ru</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇮🇹</span><div><div class="rname">Italy</div><div class="rsite">shopname.it</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇩🇰</span><div><div class="rname">Denmark</div><div class="rsite">denmark.com.dk</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇫🇷</span><div><div class="rname">France</div><div class="rsite">shopname.com.fr</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇦🇪</span><div><div class="rname">Arabic Emirates</div><div class="rsite">shopname.ae</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇨🇳</span><div><div class="rname">China</div><div class="rsite">shopname.ae</div></div></div>
+      <div class="region-item"><span style="font-size:1.5rem">🇬🇧</span><div><div class="rname">Great Britain</div><div class="rsite">shopname.co.uk</div></div></div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Subscribe on our newsletter</h2>
+    <p>Get daily news on upcoming offers from many suppliers all over the world</p>
+    <div class="nl-form">
+      <input type="email" placeholder="✉ Email">
+      <button class="btn-primary" onclick="showToast('Subscribed successfully!')">Subscribe</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><div class="logo-icon"><i class="fas fa-shopping-bag"></i></div> Brand</div>
+        <p class="footer-desc">Best information about the company goes here but now lorem ipsum is</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Find store</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partnership</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Find store</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Money Refund</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For users</h4>
+          <ul>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">My Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get app</h4>
+          <div class="app-badges">
+            <div class="app-badge"><i class="fab fa-apple"></i><div><div style="font-size:0.65rem;opacity:0.7">Download on the</div><div style="font-weight:700">App Store</div></div></div>
+            <div class="app-badge"><i class="fab fa-google-play"></i><div><div style="font-size:0.65rem;opacity:0.7">GET IT ON</div><div style="font-weight:700">Google Play</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright">
+    <span>© 2023 Ecommerce.</span>
+    <span>🇺🇸 English ∧</span>
+  </div>
+</div>
+
+<!-- ======== LISTING PAGE ======== -->
+<div class="page" id="page-listing">
+  <div class="breadcrumb">
+    <a href="#" onclick="showPage('home')">Home</a> <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+    <a href="#">Clothings</a> <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+    <a href="#">Men's wear</a> <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+    <span>Summer clothing</span>
+  </div>
+  <div class="listing-layout">
+    <!-- FILTER PANEL -->
+    <div class="filter-panel">
+      <div class="filter-section">
+        <div class="filter-title">Category <i class="fas fa-chevron-up"></i></div>
+        <div class="filter-item"><label>Mobile accessory</label></div>
+        <div class="filter-item"><label>Electronics</label></div>
+        <div class="filter-item"><label>Smartphones</label></div>
+        <div class="filter-item"><label>Modern tech</label></div>
+        <a href="#" style="color:var(--blue);font-size:0.88rem;margin-top:4px;display:block">See all</a>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Brands <i class="fas fa-chevron-up"></i></div>
+        <div class="filter-item"><input type="checkbox"> <label>Samsung</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Apple</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Huawei</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Pocco</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Lenovo</label></div>
+        <a href="#" style="color:var(--blue);font-size:0.88rem;margin-top:4px;display:block">See all</a>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Features <i class="fas fa-chevron-up"></i></div>
+        <div class="filter-item"><input type="checkbox"> <label>Metallic</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Plastic cover</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>8GB Ram</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Super power</label></div>
+        <div class="filter-item"><input type="checkbox"> <label>Large Memory</label></div>
+        <a href="#" style="color:var(--blue);font-size:0.88rem;margin-top:4px;display:block">See all</a>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Price range <i class="fas fa-chevron-up"></i></div>
+        <div class="price-range">
+          <input type="range" min="0" max="1000" value="200" id="priceMin">
+          <input type="range" min="0" max="1000" value="600" id="priceMax">
+        </div>
+        <div class="price-inputs">
+          <input type="number" placeholder="0" value="0">
+          <input type="number" placeholder="999999" value="999999">
+        </div>
+        <button class="btn-apply">Apply</button>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Condition <i class="fas fa-chevron-up"></i></div>
+        <div class="filter-item"><input type="radio" name="cond" checked> <label>Any</label></div>
+        <div class="filter-item"><input type="radio" name="cond"> <label>Refurbished</label></div>
+        <div class="filter-item"><input type="radio" name="cond"> <label>Brand new</label></div>
+        <div class="filter-item"><input type="radio" name="cond"> <label>Old items</label></div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Ratings <i class="fas fa-chevron-up"></i></div>
+        <div class="filter-item"><input type="checkbox"> <div class="star-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+        <div class="filter-item"><input type="checkbox"> <div class="star-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star empty"></i></div></div>
+        <div class="filter-item"><input type="checkbox"> <div class="star-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star empty"></i><i class="fas fa-star empty"></i></div></div>
+        <div class="filter-item"><input type="checkbox"> <div class="star-filter"><i class="fas fa-star"></i><i class="fas fa-star empty"></i><i class="fas fa-star empty"></i><i class="fas fa-star empty"></i><i class="fas fa-star empty"></i></div></div>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div>
+      <div class="listing-header">
+        <div class="listing-count"><span id="listCount">12,911</span> items in <strong>Mobile accessory</strong></div>
+        <div class="verified-check"><input type="checkbox" checked id="verifiedOnly"> <label for="verifiedOnly">Verified only</label></div>
+        <select class="sort-select"><option>Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest</option></select>
+        <div class="view-toggle">
+          <div class="view-btn active" id="listViewBtn" onclick="setView('list')"><i class="fas fa-list"></i></div>
+          <div class="view-btn" id="gridViewBtn" onclick="setView('grid')"><i class="fas fa-th"></i></div>
+        </div>
+      </div>
+
+      <!-- LIST VIEW -->
+      <div id="listView" class="list-items"></div>
+      <!-- GRID VIEW -->
+      <div id="gridView" class="grid-items" style="display:none"></div>
+
+      <div class="pagination">
+        <div class="page-show">Show <select><option>10</option><option>20</option><option>50</option></select> per page</div>
+        <div class="page-num" onclick="showToast('Previous page')"><i class="fas fa-chevron-left"></i></div>
+        <div class="page-num active">1</div>
+        <div class="page-num" onclick="switchPage(2)">2</div>
+        <div class="page-num" onclick="switchPage(3)">3</div>
+        <div class="page-num" onclick="showToast('Next page')"><i class="fas fa-chevron-right"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Subscribe on our newsletter</h2>
+    <p>Get daily news on upcoming offers from many suppliers all over the world</p>
+    <div class="nl-form">
+      <input type="email" placeholder="✉ Email">
+      <button class="btn-primary" onclick="showToast('Subscribed!')">Subscribe</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo" onclick="showPage('home')" style="cursor:pointer"><div class="logo-icon"><i class="fas fa-shopping-bag"></i></div> Brand</div>
+        <p class="footer-desc">Best information about the company goes here but now lorem ipsum is</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>About</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li><li><a href="#">Categories</a></li><li><a href="#">Blogs</a></li></ul></div>
+        <div class="footer-col"><h4>Partnership</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li><li><a href="#">Categories</a></li><li><a href="#">Blogs</a></li></ul></div>
+        <div class="footer-col"><h4>Information</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Money Refund</a></li><li><a href="#">Shipping</a></li><li><a href="#">Contact us</a></li></ul></div>
+        <div class="footer-col"><h4>For users</h4><ul><li><a href="#">Login</a></li><li><a href="#">Register</a></li><li><a href="#">Settings</a></li><li><a href="#">My Orders</a></li></ul></div>
+        <div class="footer-col"><h4>Get app</h4><div class="app-badges"><div class="app-badge"><i class="fab fa-apple"></i><div><div style="font-size:0.65rem;opacity:0.7">Download on the</div><div style="font-weight:700">App Store</div></div></div><div class="app-badge"><i class="fab fa-google-play"></i><div><div style="font-size:0.65rem;opacity:0.7">GET IT ON</div><div style="font-weight:700">Google Play</div></div></div></div></div>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright"><span>© 2023 Ecommerce.</span><span>🇺🇸 English ∧</span></div>
+</div>
+
+<!-- ======== DETAIL PAGE ======== -->
+<div class="page" id="page-detail">
+  <div class="breadcrumb">
+    <a href="#" onclick="showPage('home')">Home</a> <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+    <a href="#" onclick="goToListing()">Clothings</a> <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+    <span id="detailBreadcrumb">Product</span>
+  </div>
+  <div class="detail-layout">
+    <div class="detail-images">
+      <div class="main-img">
+        <img id="mainDetailImg" src="" alt="">
+      </div>
+      <div class="thumb-row" id="thumbRow"></div>
+    </div>
+    <div class="detail-info">
+      <h1 class="detail-title" id="detailTitle"></h1>
+      <div class="detail-rating">
+        <span class="stars">★★★★☆</span>
+        <span class="rating-num">7.5</span>
+        <span class="orders-count">• 154 orders •</span>
+        <span class="free-ship">Free Shipping</span>
+      </div>
+      <div class="detail-price-row">
+        <span class="detail-price" id="detailPrice"></span>
+        <span class="detail-original" id="detailOriginal"></span>
+        <span class="detail-discount" id="detailDiscount"></span>
+      </div>
+      <div class="detail-meta">
+        <div class="meta-row"><span class="meta-label">Condition:</span><span class="meta-val">Brand new</span></div>
+        <div class="meta-row"><span class="meta-label">Material:</span><span class="meta-val">Premium Quality</span></div>
+        <div class="meta-row"><span class="meta-label">Category:</span><span class="meta-val" id="detailCat">Electronics</span></div>
+        <div class="meta-row"><span class="meta-label">Shipping:</span><span class="meta-val" style="color:var(--green)">Free Shipping</span></div>
+        <div class="meta-row"><span class="meta-label">Availability:</span><span class="meta-val" style="color:var(--green)">In Stock</span></div>
+      </div>
+      <div class="qty-row">
+        <span style="font-weight:600">Quantity:</span>
+        <div class="qty-ctrl">
+          <button onclick="changeQty(-1)">−</button>
+          <input type="number" value="1" min="1" id="qtyInput">
+          <button onclick="changeQty(1)">+</button>
+        </div>
+        <span style="font-size:0.9rem; color:var(--text-muted)">pieces available</span>
+      </div>
+      <div class="action-row">
+        <button class="btn-cart" onclick="addToCartDetail()"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+        <button class="btn-wish" id="detailWishBtn" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="ship-info"><i class="fas fa-truck"></i> Free Shipping • Estimated delivery 3-7 days</div>
+      <div class="ship-info"><i class="fas fa-shield-alt"></i> Buyer Protection • Full refund if item not received</div>
+    </div>
+  </div>
+
+  <!-- Related products -->
+  <div class="section">
+    <h2 class="section-title">Related items</h2>
+    <br>
+    <div class="rec-grid" id="relatedGrid"></div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Subscribe on our newsletter</h2>
+    <p>Get daily news on upcoming offers from many suppliers all over the world</p>
+    <div class="nl-form">
+      <input type="email" placeholder="✉ Email">
+      <button class="btn-primary" onclick="showToast('Subscribed!')">Subscribe</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo" onclick="showPage('home')" style="cursor:pointer"><div class="logo-icon"><i class="fas fa-shopping-bag"></i></div> Brand</div>
+        <p class="footer-desc">Best information about the company goes here but now lorem ipsum is</p>
+        <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>About</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li><li><a href="#">Categories</a></li><li><a href="#">Blogs</a></li></ul></div>
+        <div class="footer-col"><h4>Partnership</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li><li><a href="#">Categories</a></li><li><a href="#">Blogs</a></li></ul></div>
+        <div class="footer-col"><h4>Information</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Money Refund</a></li><li><a href="#">Shipping</a></li><li><a href="#">Contact us</a></li></ul></div>
+        <div class="footer-col"><h4>For users</h4><ul><li><a href="#">Login</a></li><li><a href="#">Register</a></li><li><a href="#">Settings</a></li><li><a href="#">My Orders</a></li></ul></div>
+        <div class="footer-col"><h4>Get app</h4><div class="app-badges"><div class="app-badge"><i class="fab fa-apple"></i><div><div style="font-size:0.65rem;opacity:0.7">Download on the</div><div style="font-weight:700">App Store</div></div></div><div class="app-badge"><i class="fab fa-google-play"></i><div><div style="font-size:0.65rem;opacity:0.7">GET IT ON</div><div style="font-weight:700">Google Play</div></div></div></div></div>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright"><span>© 2023 Ecommerce.</span><span>🇺🇸 English ∧</span></div>
+</div>
+
+<!-- ======== CART PAGE ======== -->
+<div class="page" id="page-cart">
+  <div style="padding:16px 40px 4px; font-size:1.1rem; font-weight:700;">My Cart <span id="cartItemCount" style="color:var(--text-muted); font-weight:400; font-size:0.95rem"></span></div>
+  <div class="cart-layout">
+    <div>
+      <div class="cart-table" id="cartTable">
+        <div class="cart-head">
+          <span>Product</span><span>Price</span><span>Quantity</span><span>Total</span><span></span>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-footer">
+          <button class="btn-continue" onclick="showPage('listing')"><i class="fas fa-arrow-left"></i> Continue shopping</button>
+          <button class="btn-clear" onclick="clearCart()">Clear cart</button>
+        </div>
+      </div>
+      <div id="emptyCart" class="empty-cart" style="display:none">
+        <i class="fas fa-shopping-cart"></i>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added any items yet.</p>
+        <button class="btn-primary" onclick="showPage('listing')">Start Shopping</button>
+      </div>
+    </div>
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">$0.00</span></div>
+      <div class="summary-row"><span>Shipping</span><span style="color:var(--green)">Free</span></div>
+      <div class="summary-row"><span>Tax (5%)</span><span id="summaryTax">$0.00</span></div>
+      <div class="summary-row total"><span>Total</span><span id="summaryTotal">$0.00</span></div>
+      <div class="coupon-row">
+        <input type="text" placeholder="Coupon code">
+        <button onclick="showToast('Coupon applied!')">Apply</button>
+      </div>
+      <button class="btn-checkout" onclick="showToast('Proceeding to checkout...')">Checkout</button>
+      <div style="margin-top:12px; text-align:center; font-size:0.82rem; color:var(--text-muted)">
+        <i class="fas fa-lock"></i> Secure checkout with SSL encryption
+      </div>
+    </div>
+  </div>
+  <footer style="margin-top:40px">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo" onclick="showPage('home')" style="cursor:pointer"><div class="logo-icon"><i class="fas fa-shopping-bag"></i></div> Brand</div>
+        <p class="footer-desc">Best information about the company goes here</p>
+        <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>About</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li></ul></div>
+        <div class="footer-col"><h4>Information</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Shipping</a></li></ul></div>
+        <div class="footer-col"><h4>For users</h4><ul><li><a href="#">Login</a></li><li><a href="#">My Orders</a></li></ul></div>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright"><span>© 2023 Ecommerce.</span><span>🇺🇸 English ∧</span></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
